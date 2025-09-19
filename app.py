@@ -9,9 +9,6 @@ def initialize_data():
         # 首次加载时，创建一个包含正确列名的空DataFrame
         columns = ['款式编码', '品类', '波段', '开发颜色']  # 可根据需要添加更多列
         st.session_state.df_明细表 = pd.DataFrame(columns=columns)
-    
-    # 确保 data_editor 的状态与我们的主DataFrame同步
-    st.session_state.data_editor_df = st.session_state.df_明细表
 
 # 初始化数据
 initialize_data()
@@ -23,17 +20,12 @@ st.markdown("### 在线填写新品研发明细并实时生成BOM视图")
 st.header("1. 在线编辑新品研发明细")
 st.info("您可以在下表中直接添加、修改或删除行，就像使用Excel一样。")
 
-# 使用 key 参数直接进行双向绑定
+# 让 data_editor 直接读取和写入同一个 session_state 变量
 st.data_editor(
-    st.session_state.df_明细表,
-    num_rows="dynamic",
-    key="data_editor_df"  # 给 data_editor 一个唯一的 key
+    st.session_state.df_明细表,  # 读取
+    key="df_明细表",            # 编辑后的结果也写回这里
+    num_rows="dynamic"
 )
-
-# 重要：data_editor 会自动将其状态更新到 st.session_state.data_editor_df
-# 我们需要将这个更新同步回我们自己的变量
-if "data_editor_df" in st.session_state:
-    st.session_state.df_明细表 = st.session_state.data_editor_df
 
 # 第二部分：选择款式并生成BOM
 st.header("2. 选择款式并实时预览BOM")
