@@ -16,25 +16,27 @@ initialize_data()
 st.title("BOM协同工作流平台 (PoC)")
 st.markdown("### 在线填写新品研发明细并实时生成BOM视图")
 
-# 第一部分：在线数据编辑器
+# ------------ 1. 在线编辑新品研发明细 ------------
 st.header("1. 在线编辑新品研发明细")
 st.info("您可以在下表中直接添加、修改或删除行，就像使用Excel一样。")
 
-# data_editor 读取 session_state 中的数据作为初始值
-# 它会返回一个用户编辑后的新 DataFrame
+# 从 session_state 读取当前数据
+current_df = st.session_state.df_明细表
+
+# 将当前数据传递给 data_editor，并获取编辑后的结果
 edited_df = st.data_editor(
-    st.session_state.df_明细表,
+    current_df,
     num_rows="dynamic"
-    # 注意：这里没有 key 参数！
 )
 
-# 关键一步：立即用返回的结果覆盖 session_state 中的旧数据
-# 这样，在下一次脚本重跑时，data_editor 就会读到最新的数据
+# 无论用户是否编辑，都用 data_editor 的当前输出来更新 session_state
 st.session_state.df_明细表 = edited_df
 
-# 第二部分：选择款式并生成BOM
+
+# ------------ 2. 选择款式并实时预览BOM ------------
 st.header("2. 选择款式并实时预览BOM")
 
+# 从刚刚更新过的 session_state 中获取最新的款式编码列表
 valid_codes = st.session_state.df_明细表['款式编码'].dropna().unique().tolist()
 if not valid_codes:
     st.warning("请在上方表格中至少添加一个包含'款式编码'的有效行。")
