@@ -20,12 +20,17 @@ st.markdown("### 在线填写新品研发明细并实时生成BOM视图")
 st.header("1. 在线编辑新品研发明细")
 st.info("您可以在下表中直接添加、修改或删除行，就像使用Excel一样。")
 
-# 让 data_editor 直接读取和写入同一个 session_state 变量
-st.data_editor(
-    st.session_state.df_明细表,  # 读取
-    key="df_明细表",            # 编辑后的结果也写回这里
+# data_editor 读取 session_state 中的数据作为初始值
+# 它会返回一个用户编辑后的新 DataFrame
+edited_df = st.data_editor(
+    st.session_state.df_明细表,
     num_rows="dynamic"
+    # 注意：这里没有 key 参数！
 )
+
+# 关键一步：立即用返回的结果覆盖 session_state 中的旧数据
+# 这样，在下一次脚本重跑时，data_editor 就会读到最新的数据
+st.session_state.df_明细表 = edited_df
 
 # 第二部分：选择款式并生成BOM
 st.header("2. 选择款式并实时预览BOM")
