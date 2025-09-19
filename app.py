@@ -10,6 +10,10 @@ def initialize_data():
         columns = ['款式编码', '品类', '波段', '开发颜色']  # 可根据需要添加更多列
         st.session_state.df_明细表 = pd.DataFrame(columns=columns)
 
+def sync_editor_changes():
+    """回调函数：将 data_editor 的最新状态同步回我们的主 DataFrame"""
+    st.session_state.df_明细表 = st.session_state.product_data_editor
+
 # 初始化数据
 initialize_data()
 
@@ -20,17 +24,12 @@ st.markdown("### 在线填写新品研发明细并实时生成BOM视图")
 st.header("1. 在线编辑新品研发明细")
 st.info("您可以在下表中直接添加、修改或删除行，就像使用Excel一样。")
 
-# 从 session_state 读取当前数据
-current_df = st.session_state.df_明细表
-
-# 将当前数据传递给 data_editor，并获取编辑后的结果
-edited_df = st.data_editor(
-    current_df,
+st.data_editor(
+    st.session_state.df_明细表,
+    key="product_data_editor",     # 必须有一个 key
+    on_change=sync_editor_changes, # 注册回调
     num_rows="dynamic"
 )
-
-# 无论用户是否编辑，都用 data_editor 的当前输出来更新 session_state
-st.session_state.df_明细表 = edited_df
 
 
 # ------------ 2. 选择款式并实时预览BOM ------------
