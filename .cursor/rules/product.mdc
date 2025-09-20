@@ -1,0 +1,55 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+# BOM协同工作流平台 - 项目开发规则与章程 (V1.0)
+
+你好，Cursor。本项目旨在构建一个企业级的BOM协同工作流平台。为保证代码质量、开发效率和项目可维护性，你必须严格遵守以下所有规则。
+
+## 1. 核心理念与开发模式
+
+- **TDD (测试驱动开发)**: **这是本项目的最高法则**。任何新功能的实现或Bug修复，都必须严格遵循 **Red-Green-Refactor** 的循环。**禁止编写任何没有对应失败测试的实现代码**。
+- **Git工作流**: 每一个完整的TDD周期都必须对应一次Git提交。提交信息必须遵循 **Conventional Commits** 规范 (`feat:`, `fix:`, `test:`, `refactor:`, `docs:`, `chore:`)。代码必须在每个开发单元结束后及时推送到远程仓库。
+
+## 2. 项目架构
+
+本项目采用经典的三层分离架构：
+
+- **数据库 (Database)**: PostgreSQL，通过Django ORM进行交互。
+- **后端 (Backend)**: Django & Django REST Framework (DRF)，负责业务逻辑和API。
+- **前端 (Frontend)**: Vue.js / React (待定)，通过API与后端通信。
+
+**代码必须严格分离**：
+- 数据库模型定义在 `boms/models.py`。
+- 业务逻辑和API视图在 `boms/views.py` 和 `boms/serializers.py`。
+- 路径配置在 `boms/urls.py` 和 `config/urls.py`。
+
+## 3. 命名规范
+
+- **Python (PEP 8)**:
+    - `ClassNames`: 驼峰式 (e.g., `BomGenerator`)
+    - `function_names` / `variable_names`: 蛇形 (e.g., `get_style_info`)
+    - `CONSTANTS`: 全大写 (e.g., `STATUS_CHOICES`)
+- **Django模型**:
+    - 模型类名：单数形式，驼峰式 (e.g., `Bom`, `BomDetail`)
+    - 字段名：蛇形 (e.g., `style_code`, `created_by`)
+- **API Endpoints**:
+    - 使用复数形式命名资源 (e.g., `/api/boms/`, `/api/users/`)
+    - URL路径使用小写字母和连字符 `-` (如果需要)。
+- **Git分支**: (如果未来使用) `feat/feature-name`, `fix/bug-name`。
+
+## 4. 组件与代码定义
+
+- **Fat Models, Thin Views**: 尽可能将业务逻辑封装在**模型的方法**中 (e.g., `bom.submit_to_next_step()`)，而不是堆砌在视图函数里。视图应保持轻量，主要负责处理HTTP请求和响应。
+- **序列化器 (Serializers)**: DRF的序列化器负责数据的验证和内外格式的转换。复杂的验证逻辑应放在序列化器中。
+- **单一职责原则**: 每个函数、每个类都应只做好一件事。
+- **禁止硬编码**: 任何配置项、固定选项、URL等都应定义为常量或放在 `settings.py` 中。
+
+## 5. 沟通与执行
+
+- 你必须在每个TDD步骤（写测试、看失败、写实现、看成功、重构）后主动报告进度。
+- 在执行Git提交前，必须先向PM展示Commit Message以供确认。
+- 如果对任何指令有疑问，必须请求澄清，禁止进行假设性开发。
+
+**遵守以上规则是你在本项目中的首要职责。**
