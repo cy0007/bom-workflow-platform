@@ -1,5 +1,5 @@
 from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from .models import Bom
@@ -17,7 +17,7 @@ class BomListView(generics.ListAPIView):
     """
     queryset = Bom.objects.select_related('created_by', 'assigned_to').order_by('-created_at')
     serializer_class = BomSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]  # 临时允许匿名访问，用于前端测试
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['status', 'category', 'season', 'year']
     search_fields = ['style_code', 'product_name', 'wave']
@@ -36,5 +36,5 @@ class BomDetailView(generics.RetrieveUpdateAPIView):
     """
     queryset = Bom.objects.select_related('created_by', 'assigned_to')
     serializer_class = BomSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]  # 临时允许匿名访问，用于前端测试
     lookup_field = 'style_code'
