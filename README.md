@@ -461,11 +461,65 @@ docker-compose exec backend python manage.py test boms
 - 🚀 **可扩展设计**：为后续API开发奠定基础
 - 📋 **企业标准**：遵循Django和DRF企业级开发规范
 
+### 2025/09/20 15:00 - BOM详情和更新API开发完成 ✅
+
+- ✅ **TDD开发模式再次实践**：严格遵循Red-Green-Refactor循环
+  - 🔴 Red: 编写BOM详情获取和更新的失败测试用例
+  - 🟢 Green: 实现RetrieveUpdateAPIView让测试通过
+  - ♻️ Refactor: 添加高级过滤、搜索和性能优化
+- ✅ **BOM详情API** (`GET /api/boms/{style_code}/`)：
+  - 基于款式编码的RESTful API设计
+  - 性能优化：select_related()避免N+1查询
+  - 身份验证保护：仅认证用户可访问
+  - 返回完整BOM数据，包括计算字段
+- ✅ **BOM更新API** (`PATCH /api/boms/{style_code}/`)：
+  - 支持部分更新（PATCH）和完整更新（PUT）
+  - 遵循RESTful语义，PATCH用于部分字段更新
+  - 数据验证：DRF序列化器验证所有字段
+  - 实时数据库同步验证
+- ✅ **企业级高级功能**：完善的API能力
+  - **高级过滤**: `?status=DRAFT&category=TOP&season=SPRING`
+  - **搜索功能**: `?search=TEST001` (支持款式编码、产品名称、波段)
+  - **排序功能**: `?ordering=-created_at,style_code`
+  - **性能优化**: select_related('created_by', 'assigned_to')
+- ✅ **完整测试覆盖**：新增2个测试用例
+  - `test_can_retrieve_bom_detail`: 验证详情获取功能
+  - `test_can_update_bom_detail`: 验证PATCH更新功能
+  - 重构现有测试：使用setUp方法避免代码重复
+- ✅ **新增技术依赖**：
+  - `django-filter`: 企业级过滤功能
+  - 配置INSTALLED_APPS添加django_filters
+  - 生产级过滤后端集成
+
+**API测试验证**：
+```bash
+# Docker环境中的测试命令
+docker-compose exec backend python manage.py test boms
+# 结果：✅ OK (3 tests, 0.812s)
+```
+
+**技术突破**：
+- 🎯 **TDD最佳实践**：完整的第二轮TDD开发流程
+- 🔄 **RESTful设计**：正确使用PATCH进行部分更新
+- 🔍 **企业级过滤**: DRF + django-filter高级组合
+- ⚡ **性能优化**: 数据库查询优化实践
+- 📋 **完善API文档**: 详细的功能说明和使用示例
+
+**API功能对比**：
+
+| API端点 | 方法 | 功能 | 状态 |
+|---------|------|------|------|
+| `/api/boms/` | GET | BOM列表 | ✅ 完成 |
+| `/api/boms/{style_code}/` | GET | BOM详情 | ✅ 完成 |
+| `/api/boms/{style_code}/` | PATCH | BOM部分更新 | ✅ 完成 |
+| `/api/boms/{style_code}/` | PUT | BOM完整更新 | ✅ 完成 |
+
 **下一步规划**：
-- [ ] BOM详情API开发 (GET /api/boms/{id}/)
-- [ ] BOM创建/更新API开发 (POST/PUT/PATCH)
-- [ ] API过滤和搜索功能
-- [ ] API分页和性能优化
+- [ ] BOM创建API开发 (POST /api/boms/)
+- [ ] BOM删除API开发 (DELETE /api/boms/{style_code}/)
+- [ ] BOM明细管理API (nested resources)
+- [ ] API分页功能实现
+- [ ] API权限细化（创建人权限控制）
 - [ ] 前端界面开发
 
 ## 技术架构
