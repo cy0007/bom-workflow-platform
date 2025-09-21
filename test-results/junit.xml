@@ -1,0 +1,341 @@
+<testsuites id="" name="" tests="63" failures="2" skipped="0" errors="0" time="66.501413">
+<testsuite name="bom-edit.spec.js" timestamp="2025-09-21T13:15:48.839Z" hostname="chromium" tests="9" failures="0" skipped="0" time="42.303" errors="0">
+<testcase name="BOM编辑功能测试 › Pattern maker can edit size specs" classname="bom-edit.spec.js" time="4.276">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer can edit material list" classname="bom-edit.spec.js" time="3.294">
+</testcase>
+<testcase name="BOM编辑功能测试 › Read-only access for non-authorized roles" classname="bom-edit.spec.js" time="6.356">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM status controls edit permissions" classname="bom-edit.spec.js" time="2.27">
+</testcase>
+<testcase name="BOM编辑功能测试 › Edit mode toggle functionality" classname="bom-edit.spec.js" time="4.643">
+</testcase>
+<testcase name="BOM编辑功能测试 › Design assistant has access to BOM pages" classname="bom-edit.spec.js" time="6.501">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer has specialized permissions" classname="bom-edit.spec.js" time="4.177">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM manager has full access" classname="bom-edit.spec.js" time="4.595">
+</testcase>
+<testcase name="BOM编辑功能测试 › Role-based UI elements visibility" classname="bom-edit.spec.js" time="6.191">
+</testcase>
+</testsuite>
+<testsuite name="bom-edit.spec.js" timestamp="2025-09-21T13:15:48.839Z" hostname="firefox" tests="9" failures="0" skipped="0" time="121.184" errors="0">
+<testcase name="BOM编辑功能测试 › Pattern maker can edit size specs" classname="bom-edit.spec.js" time="6.01">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer can edit material list" classname="bom-edit.spec.js" time="15.443">
+</testcase>
+<testcase name="BOM编辑功能测试 › Read-only access for non-authorized roles" classname="bom-edit.spec.js" time="22.028">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM status controls edit permissions" classname="bom-edit.spec.js" time="9.806">
+</testcase>
+<testcase name="BOM编辑功能测试 › Edit mode toggle functionality" classname="bom-edit.spec.js" time="4.355">
+</testcase>
+<testcase name="BOM编辑功能测试 › Design assistant has access to BOM pages" classname="bom-edit.spec.js" time="7.504">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer has specialized permissions" classname="bom-edit.spec.js" time="24.081">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM manager has full access" classname="bom-edit.spec.js" time="12.232">
+</testcase>
+<testcase name="BOM编辑功能测试 › Role-based UI elements visibility" classname="bom-edit.spec.js" time="19.725">
+</testcase>
+</testsuite>
+<testsuite name="bom-edit.spec.js" timestamp="2025-09-21T13:15:48.839Z" hostname="webkit" tests="9" failures="0" skipped="0" time="25.154" errors="0">
+<testcase name="BOM编辑功能测试 › Pattern maker can edit size specs" classname="bom-edit.spec.js" time="4.122">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer can edit material list" classname="bom-edit.spec.js" time="4.5">
+</testcase>
+<testcase name="BOM编辑功能测试 › Read-only access for non-authorized roles" classname="bom-edit.spec.js" time="2.485">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM status controls edit permissions" classname="bom-edit.spec.js" time="1.886">
+</testcase>
+<testcase name="BOM编辑功能测试 › Edit mode toggle functionality" classname="bom-edit.spec.js" time="1.83">
+</testcase>
+<testcase name="BOM编辑功能测试 › Design assistant has access to BOM pages" classname="bom-edit.spec.js" time="3.49">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer has specialized permissions" classname="bom-edit.spec.js" time="1.464">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM manager has full access" classname="bom-edit.spec.js" time="3.96">
+</testcase>
+<testcase name="BOM编辑功能测试 › Role-based UI elements visibility" classname="bom-edit.spec.js" time="1.417">
+</testcase>
+</testsuite>
+<testsuite name="bom-edit.spec.js" timestamp="2025-09-21T13:15:48.839Z" hostname="Mobile Chrome" tests="9" failures="2" skipped="0" time="79.891" errors="0">
+<testcase name="BOM编辑功能测试 › Pattern maker can edit size specs" classname="bom-edit.spec.js" time="5.26">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer can edit material list" classname="bom-edit.spec.js" time="30.207">
+<failure message="bom-edit.spec.js:49:7 Craft designer can edit material list" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › bom-edit.spec.js:49:7 › BOM编辑功能测试 › Craft designer can edit material list ──────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('button:has-text("保存物料修改")')
+        - locator resolved to <button data-v-816f007d="">保存物料修改</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <button disabled data-v-816f007d="">编辑规格尺寸</button> intercepts pointer events
+      - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <div id="app" data-v-7a7a37b1="">…</div> intercepts pointer events
+      12 × retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <button disabled data-v-816f007d="">编辑规格尺寸</button> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <div id="app" data-v-7a7a37b1="">…</div> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <div id="app" data-v-7a7a37b1="">…</div> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      62 |     // 输入新值
+      63 |     await materialCell.fill('1.5');
+    > 64 |     await page.locator('button:has-text("保存物料修改")').click();
+         |                                                     ^
+      65 |     
+      66 |     // 验证保存成功
+      67 |     await expect(page.locator('.el-message--success')).toBeVisible();
+        at D:\code\bom-workflow-platform\tests\bom-edit.spec.js:64:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\bom-edit-BOM编辑功能测试-Craft-designer-can-edit-material-list-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\bom-edit-BOM编辑功能测试-Craft-designer-can-edit-material-list-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\bom-edit-BOM编辑功能测试-Craft-designer-can-edit-material-list-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|bom-edit-BOM编辑功能测试-Craft-designer-can-edit-material-list-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|bom-edit-BOM编辑功能测试-Craft-designer-can-edit-material-list-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|bom-edit-BOM编辑功能测试-Craft-designer-can-edit-material-list-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="BOM编辑功能测试 › Read-only access for non-authorized roles" classname="bom-edit.spec.js" time="3.23">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM status controls edit permissions" classname="bom-edit.spec.js" time="2.501">
+</testcase>
+<testcase name="BOM编辑功能测试 › Edit mode toggle functionality" classname="bom-edit.spec.js" time="30.234">
+<failure message="bom-edit.spec.js:114:7 Edit mode toggle functionality" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › bom-edit.spec.js:114:7 › BOM编辑功能测试 › Edit mode toggle functionality ────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for locator('button:has-text("取消")')
+        - locator resolved to <button data-v-816f007d="">取消</button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> intercepts pointer events
+      - retrying click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <button data-v-816f007d="">保存尺寸修改</button> intercepts pointer events
+      - retrying click action
+        - waiting 20ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> intercepts pointer events
+      2 × retrying click action
+          - waiting 100ms
+          - waiting for element to be visible, enabled and stable
+          - element is visible, enabled and stable
+          - scrolling into view if needed
+          - done scrolling
+          - <li tabindex="-1" role="menuitem" data-v-7a7a37b1="" class="el-menu-item">…</li> from <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> subtree intercepts pointer events
+      13 × retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <button data-v-816f007d="">保存尺寸修改</button> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <li tabindex="-1" role="menuitem" data-v-7a7a37b1="" class="el-menu-item">…</li> from <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> subtree intercepts pointer events
+         - retrying click action
+           - waiting 500ms
+           - waiting for element to be visible, enabled and stable
+           - element is visible, enabled and stable
+           - scrolling into view if needed
+           - done scrolling
+           - <li tabindex="-1" role="menuitem" data-v-7a7a37b1="" class="el-menu-item">…</li> from <aside data-v-7a7a37b1="" class="el-aside app-aside">…</aside> subtree intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - <button data-v-816f007d="">保存尺寸修改</button> intercepts pointer events
+      - retrying click action
+        - waiting 500ms
+
+
+      133 |     
+      134 |     // 点击取消按钮退出编辑模式
+    > 135 |     await page.locator('button:has-text("取消")').click();
+          |                                                 ^
+      136 |     
+      137 |     // 断言返回只读模式
+      138 |     await expect(page.locator('.readonly-mode')).toBeVisible();
+        at D:\code\bom-workflow-platform\tests\bom-edit.spec.js:135:49
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\bom-edit-BOM编辑功能测试-Edit-mode-toggle-functionality-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\bom-edit-BOM编辑功能测试-Edit-mode-toggle-functionality-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\bom-edit-BOM编辑功能测试-Edit-mode-toggle-functionality-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|bom-edit-BOM编辑功能测试-Edit-mode-toggle-functionality-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|bom-edit-BOM编辑功能测试-Edit-mode-toggle-functionality-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|bom-edit-BOM编辑功能测试-Edit-mode-toggle-functionality-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="BOM编辑功能测试 › Design assistant has access to BOM pages" classname="bom-edit.spec.js" time="2.851">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer has specialized permissions" classname="bom-edit.spec.js" time="1.855">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM manager has full access" classname="bom-edit.spec.js" time="1.726">
+</testcase>
+<testcase name="BOM编辑功能测试 › Role-based UI elements visibility" classname="bom-edit.spec.js" time="2.027">
+</testcase>
+</testsuite>
+<testsuite name="bom-edit.spec.js" timestamp="2025-09-21T13:15:48.839Z" hostname="Mobile Safari" tests="9" failures="0" skipped="0" time="24.637" errors="0">
+<testcase name="BOM编辑功能测试 › Pattern maker can edit size specs" classname="bom-edit.spec.js" time="4.76">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer can edit material list" classname="bom-edit.spec.js" time="3.194">
+</testcase>
+<testcase name="BOM编辑功能测试 › Read-only access for non-authorized roles" classname="bom-edit.spec.js" time="2.025">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM status controls edit permissions" classname="bom-edit.spec.js" time="2.759">
+</testcase>
+<testcase name="BOM编辑功能测试 › Edit mode toggle functionality" classname="bom-edit.spec.js" time="2.925">
+</testcase>
+<testcase name="BOM编辑功能测试 › Design assistant has access to BOM pages" classname="bom-edit.spec.js" time="2.36">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer has specialized permissions" classname="bom-edit.spec.js" time="2.577">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM manager has full access" classname="bom-edit.spec.js" time="1.937">
+</testcase>
+<testcase name="BOM编辑功能测试 › Role-based UI elements visibility" classname="bom-edit.spec.js" time="2.1">
+</testcase>
+</testsuite>
+<testsuite name="bom-edit.spec.js" timestamp="2025-09-21T13:15:48.839Z" hostname="Microsoft Edge" tests="9" failures="0" skipped="0" time="25.249" errors="0">
+<testcase name="BOM编辑功能测试 › Pattern maker can edit size specs" classname="bom-edit.spec.js" time="4.475">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer can edit material list" classname="bom-edit.spec.js" time="3.063">
+</testcase>
+<testcase name="BOM编辑功能测试 › Read-only access for non-authorized roles" classname="bom-edit.spec.js" time="2.6">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM status controls edit permissions" classname="bom-edit.spec.js" time="2.461">
+</testcase>
+<testcase name="BOM编辑功能测试 › Edit mode toggle functionality" classname="bom-edit.spec.js" time="2.842">
+</testcase>
+<testcase name="BOM编辑功能测试 › Design assistant has access to BOM pages" classname="bom-edit.spec.js" time="2.673">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer has specialized permissions" classname="bom-edit.spec.js" time="2.516">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM manager has full access" classname="bom-edit.spec.js" time="1.51">
+</testcase>
+<testcase name="BOM编辑功能测试 › Role-based UI elements visibility" classname="bom-edit.spec.js" time="3.109">
+</testcase>
+</testsuite>
+<testsuite name="bom-edit.spec.js" timestamp="2025-09-21T13:15:48.839Z" hostname="Google Chrome" tests="9" failures="0" skipped="0" time="21.191" errors="0">
+<testcase name="BOM编辑功能测试 › Pattern maker can edit size specs" classname="bom-edit.spec.js" time="3.553">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer can edit material list" classname="bom-edit.spec.js" time="3.708">
+</testcase>
+<testcase name="BOM编辑功能测试 › Read-only access for non-authorized roles" classname="bom-edit.spec.js" time="3.299">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM status controls edit permissions" classname="bom-edit.spec.js" time="1.874">
+</testcase>
+<testcase name="BOM编辑功能测试 › Edit mode toggle functionality" classname="bom-edit.spec.js" time="2.091">
+</testcase>
+<testcase name="BOM编辑功能测试 › Design assistant has access to BOM pages" classname="bom-edit.spec.js" time="1.67">
+</testcase>
+<testcase name="BOM编辑功能测试 › Craft designer has specialized permissions" classname="bom-edit.spec.js" time="2.452">
+</testcase>
+<testcase name="BOM编辑功能测试 › BOM manager has full access" classname="bom-edit.spec.js" time="1.114">
+</testcase>
+<testcase name="BOM编辑功能测试 › Role-based UI elements visibility" classname="bom-edit.spec.js" time="1.43">
+</testcase>
+</testsuite>
+</testsuites>

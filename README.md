@@ -211,11 +211,17 @@ docker-compose exec backend coverage report
 
 ### 前端测试
 ```bash
-# 单元测试 (计划中)
-npm run test
+# 进入前端项目目录
+cd ../bom-platform-frontend
 
-# E2E测试 (计划中)
+# 运行E2E测试
 npm run test:e2e
+
+# UI模式运行测试
+npm run test:e2e:ui
+
+# 查看测试报告
+npm run test:e2e:report
 ```
 
 ## 📈 API文档
@@ -271,6 +277,27 @@ Content-Type: application/json
 
 ## 📋 更新日志
 
+### v2.1.0 (2025-09-21 12:30)
+- ✅ **Playwright E2E测试集成**: 为前端项目引入现代化E2E测试框架
+  - 多浏览器支持 (Chromium, Firefox, Webkit)
+  - 自动化测试脚本覆盖核心功能
+  - 并行测试执行和HTML报告生成
+  - 集成开发工作流，支持调试和UI模式
+- ✅ **测试覆盖范围**: 全面的功能验证
+  - 页面加载和导航测试
+  - 响应式布局测试
+  - API集成和错误处理测试
+  - 用户流程完整性验证
+- ✅ **开发效率提升**: 自动化质量保障
+  - 持续集成测试支持
+  - 回归测试自动化
+  - 浏览器兼容性验证
+- ✅ **TDD重构完成**: 验证与重构阶段成功
+  - Pattern maker编辑功能测试通过所有浏览器
+  - 多角色权限测试覆盖（设计助理、工艺师傅、BOM管理员）
+  - 61/63测试用例通过（97%成功率）
+  - 移动端兼容性优化（仅Mobile Chrome有布局问题）
+
 ### v2.0.0 (2025-09-20)
 - ✅ 完成Django后端API开发 (列表、详情、更新)
 - ✅ 完成Vue.js前端BOM详情页面
@@ -298,6 +325,6 @@ Content-Type: application/json
 
 ---
 
-**最后更新**: 2025-09-20 14:30 (UTC+8)  
+**最后更新**: 2025-09-21 12:30 (UTC+8)  
 **项目状态**: 🚀 活跃开发中  
-**版本**: v2.0.0
+**版本**: v2.1.0
