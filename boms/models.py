@@ -37,6 +37,7 @@ class Bom(models.Model):
         ('DRAFT', '草稿'),
         ('PENDING_CRAFT', '待填写工艺'),
         ('PENDING_PATTERN', '待版房确认'),
+        ('PENDING_DETAILS', '待填写明细'),
         ('CONFIRMED', '已确认'),
         ('REVISED', '已修订'),
         ('CANCELLED', '已取消'),
@@ -151,6 +152,127 @@ class Bom(models.Model):
                 models.F('unit_price') * models.F('usage_quantity')
             )
         )['total'] or Decimal('0.00')
+
+    def submit_for_details(self, user):
+        """
+        版房师傅提交BOM以进行明细填写
+        从 PENDING_CRAFT 状态转换为 PENDING_DETAILS 状态
+        """
+        if self.status == 'PENDING_CRAFT' and hasattr(user, 'role') and user.role == 'pattern_maker':
+            self.status = 'PENDING_DETAILS'
+            self.assigned_to = None  # 清空当前负责人，等待设计助理接手
+            self.notes = f"{self.notes}\n[{user.username}] 版房师傅已完成规格尺寸设计，提交进行明细填写。" if self.notes else f"[{user.username}] 版房师傅已完成规格尺寸设计，提交进行明细填写。"
+            self.save()
+            # TODO: 在未来这里可以触发发送通知的逻辑
+            return True
+        return False
+
+    def submit_to_craft(self, user):
+        """
+        设计助理提交BOM给工艺团队
+        从 PENDING_DETAILS 状态转换为 PENDING_CRAFT 状态
+        """
+        if self.status == 'PENDING_DETAILS' and hasattr(user, 'role') and user.role == 'designer':
+            self.status = 'PENDING_CRAFT'
+            self.notes = f"{self.notes}\n[{user.username}] 设计助理已完成物料明细填写，提交给工艺团队。" if self.notes else f"[{user.username}] 设计助理已完成物料明细填写，提交给工艺团队。"
+            self.save()
+            return True
+        return False
+
+    def approve_bom(self, user):
+        """
+        BOM管理员批准BOM
+        将BOM状态设置为 CONFIRMED
+        """
+        if hasattr(user, 'role') and user.role == 'admin':
+            from django.utils import timezone
+            self.status = 'CONFIRMED'
+            self.confirmed_at = timezone.now()
+            self.notes = f"{self.notes}\n[{user.username}] BOM管理员已批准此BOM。" if self.notes else f"[{user.username}] BOM管理员已批准此BOM。"
+            self.save()
+            return True
+        return False
+
+    def reject_bom(self, user, reason=""):
+        """
+        驳回BOM，将状态设置为需要修订
+        """
+        if hasattr(user, 'role') and user.role in ['admin', 'pattern_maker']:
+            self.status = 'REVISED'
+            rejection_note = f"[{user.username}] BOM被驳回"
+            if reason:
+                rejection_note += f"，原因：{reason}"
+            self.notes = f"{self.notes}\n{rejection_note}" if self.notes else rejection_note
+            self.save()
+            return True
+        return False
+
+    def can_edit_by_user(self, user):
+        """
+        检查用户是否可以编辑此BOM
+        基于用户角色和BOM状态
+        """
+        if not hasattr(user, 'role'):
+            return False
+            
+        # 管理员可以编辑所有状态的BOM（除了已确认的）
+        if user.role == 'admin' and self.status != 'CONFIRMED':
+            return True
+            
+        # 版房师傅只能编辑PENDING_CRAFT状态的BOM
+        if user.role == 'pattern_maker' and self.status in ['PENDING_CRAFT', 'REVISED']:
+            return True
+            
+        # 设计助理只能编辑PENDING_DETAILS状态的BOM
+        if user.role == 'designer' and self.status in ['PENDING_DETAILS', 'DRAFT']:
+            return True
+            
+        return False
+
+    def get_next_possible_actions(self, user):
+        """
+        获取用户在当前状态下可以执行的操作
+        """
+        actions = []
+        
+        if not hasattr(user, 'role'):
+            return actions
+            
+        # 版房师傅的操作
+        if user.role == 'pattern_maker':
+            if self.status == 'PENDING_CRAFT':
+                actions.append({
+                    'action': 'submit_for_details', 
+                    'label': '提交以进行明细填写',
+                    'type': 'primary'
+                })
+                
+        # 设计助理的操作
+        elif user.role == 'designer':
+            if self.status == 'PENDING_DETAILS':
+                actions.append({
+                    'action': 'submit_to_craft',
+                    'label': '提交给工艺团队', 
+                    'type': 'primary'
+                })
+                
+        # 管理员的操作
+        elif user.role == 'admin':
+            if self.status in ['PENDING_CRAFT', 'PENDING_DETAILS', 'PENDING_PATTERN']:
+                actions.extend([
+                    {
+                        'action': 'approve_bom',
+                        'label': '批准BOM',
+                        'type': 'success'
+                    },
+                    {
+                        'action': 'reject_bom', 
+                        'label': '驳回BOM',
+                        'type': 'danger'
+                    }
+                ])
+                
+        return actions
 
 
 class BomDetail(models.Model):
